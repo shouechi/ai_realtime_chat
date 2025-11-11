@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "messages#index"
-  resources :messages, only: [:index, :create] do
+  resources :messages, only: [ :index, :create ] do
     collection { post :stop }
   end
   mount ActionCable.server => "/cable"

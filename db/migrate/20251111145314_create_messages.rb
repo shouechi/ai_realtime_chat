@@ -8,7 +8,7 @@ class CreateMessages < ActiveRecord::Migration[7.2]
       t.timestamps
     end
 
-    add_index :messages, [:conversation_id, :created_at]
+    add_index :messages, [ :conversation_id, :created_at ]
     add_index :messages, :meta, using: :gin
   end
 end

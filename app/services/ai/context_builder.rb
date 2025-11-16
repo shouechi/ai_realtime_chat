@@ -9,7 +9,7 @@ class Ai::ContextBuilder
 
   def build_with(latest_user_content)
     history = @conversation.last_messages(@limit)
-    messages = [{ role: "system", content: SYSTEM_PROMPT }]
+    messages = [ { role: "system", content: SYSTEM_PROMPT } ]
     messages += history.map { |m| { role: m.role, content: m.content } }
     messages << { role: "user", content: latest_user_content }
     messages

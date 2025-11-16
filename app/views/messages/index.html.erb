@@ -23,7 +23,8 @@
     <div class="w-full mx-auto max-w-7xl xl:max-w-[90rem] h-full px-4 md:px-6 lg:px-8 flex items-center">
       <form id="form" action="/messages" method="post" class="w-full card p-4 mt-4">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="conversation_id" value="global">
+        <input type="hidden" id="conversation_id" name="conversation_id" value="<%= @conversation.id %>">
+        <h2><%= @conversation.title.presence || "Conversation" %></h2>
 
         <label for="content" class="block text-xs font-semibold text-slate-500 mb-2">メッセージ</label>
         <textarea id="content" name="message[content]" rows="2"
@@ -49,7 +50,7 @@
   const area = document.getElementById("content")
   const stopBtn = document.getElementById("stop")
 
-  const cid = (document.querySelector('input[name="conversation_id"]').value) || "global"
+  const cid = "<%= @conversation.id %>"
 
   // メッセージ1行（交互に左右）
   function newRow(sender) {
